@@ -1,84 +1,141 @@
-# Dry Bean Classification Using Machine Learning
+# Machine Learning Assignment 2
+## Comparative Analysis of Classification Models on the Dry Bean Dataset
 
-## 1. Problem Statement
+### 1. Problem Statement
 
-The objective of this project is to compare five supervised
-classification algorithms for predicting the variety of a dry bean
-from its numerical measurements.
+The objective of this assignment is to implement and compare five supervised machine learning classification algorithms on a common dataset. The models are evaluated using multiple performance metrics to identify the most suitable classification algorithm.
 
-The models are Logistic Regression, Decision Tree, K-Nearest
-Neighbors, Gaussian Naive Bayes, and Support Vector Machine.
+The five models implemented are:
 
-## 2. Dataset Description
+1. Logistic Regression
+2. Decision Tree
+3. K-Nearest Neighbors (KNN)
+4. Gaussian Naive Bayes
+5. Support Vector Machine (SVM)
 
-Dataset: Dry Bean Dataset
+### 2. Dataset Description
 
-Source: UCI Machine Learning Repository
-https://archive.ics.uci.edu/dataset/602/dry+bean+dataset
+**Dataset:** Dry Bean Dataset  
+**Source:** UCI Machine Learning Repository
 
-Number of instances: 13611
-Number of input features: 16
-Target column: Class
-Number of target classes: 7
+The Dry Bean Dataset contains numerical measurements extracted from images of dry bean grains. The objective is to classify beans into their respective categories based on their physical characteristics.
 
-The dataset contains numerical measurements of dry beans.
-The target represents the bean variety.
+- Number of features: 16
+- Number of instances: More than 13,000
+- Problem type: Multiclass classification
+- Target variable: Bean class
 
-## 3. GitHub Repository Link
+The dataset satisfies the assignment requirements of having at least 12 features and 500 instances.
 
-REPLACE_WITH_YOUR_GITHUB_REPOSITORY_URL
+### 3. Project Links
 
-## 4. Models Used and Evaluation
+**GitHub Repository:**  
+https://github.com/shukla-ghosh/ml-assignment-2
 
-The data was split into training and testing sets using an 80:20
-split with stratification and random_state=42.
+**Live Streamlit Application:**  
+https://ml-assignment-2-wmc9g2x5ahvkmuvtxr5wpc.streamlit.app/
 
-Feature standardization was included in the pipelines for models
-that benefit from scaling. All models were trained on the training
-set and evaluated on the held-out test set.
+### 4. Models Implemented
 
-AUC was calculated using weighted one-versus-rest multiclass AUC.
-Precision, recall, and F1 were calculated using weighted averages.
+The following five classification algorithms were implemented and evaluated using the same dataset and training/testing split.
 
-| Model                  |   Accuracy |    AUC |   Precision |   Recall |   F1 Score |    MCC |
-|:-----------------------|-----------:|-------:|------------:|---------:|-----------:|-------:|
-| Logistic Regression    |     0.9207 | 0.9934 |      0.9215 |   0.9207 |     0.9209 | 0.9042 |
-| Decision Tree          |     0.892  | 0.9334 |      0.8917 |   0.892  |     0.8916 | 0.8696 |
-| KNN                    |     0.9166 | 0.9812 |      0.9174 |   0.9166 |     0.9168 | 0.8992 |
-| Naive Bayes            |     0.8979 | 0.9902 |      0.9007 |   0.8979 |     0.8981 | 0.8773 |
-| Support Vector Machine |     0.9221 | 0.9937 |      0.9224 |   0.9221 |     0.9222 | 0.9059 |
+| Model | Description |
+|---|---|
+| Logistic Regression | A linear classification algorithm that estimates class probabilities. |
+| Decision Tree | A tree-based model that makes predictions using decision rules. |
+| K-Nearest Neighbors | A distance-based algorithm that classifies samples using their nearest neighbors. |
+| Gaussian Naive Bayes | A probabilistic classifier based on Bayes' theorem and Gaussian feature distributions. |
+| Support Vector Machine | A classification algorithm that identifies an optimal separating hyperplane between classes. |
 
-## 5. Observations
+### 5. Evaluation Metrics
 
-Replace this section with your interpretation of the actual results.
+The models were compared using the following six evaluation metrics:
 
-- Logistic Regression: Discuss its measured metrics and errors.
-- Decision Tree: Discuss its measured metrics and errors.
-- KNN: Discuss its measured metrics and errors.
-- Naive Bayes: Discuss its measured metrics and errors.
-- Support Vector Machine: Discuss its measured metrics and errors.
+- **Accuracy:** Measures the proportion of correctly classified instances.
+- **AUC:** Measures the model's ability to distinguish between classes.
+- **Precision:** Measures how many predicted positive classifications are correct.
+- **Recall:** Measures how many actual positive instances are correctly identified.
+- **F1 Score:** Represents the harmonic mean of precision and recall.
+- **MCC:** Matthews Correlation Coefficient measures the quality of classification while considering all parts of the confusion matrix.
 
-Overall winner:
-Choose the model based on your results and explain the reason.
-Consider all six metrics rather than relying on only one metric.
+### 6. Model Performance Comparison
 
-## 6. Streamlit Application
+The following table presents the actual evaluation results obtained from the experiment.
 
-The app allows a user to upload labeled test data, select a saved
-classifier, view evaluation metrics, inspect a classification report,
-and view a confusion matrix.
+| Model | Accuracy | AUC | Precision | Recall | F1 Score | MCC |
+|---|---:|---:|---:|---:|---:|---:|
+| Logistic Regression | 0.9207 | 0.9934 | 0.9215 | 0.9207 | 0.9209 | 0.9042 |
+| Decision Tree | 0.8920 | 0.9334 | 0.8917 | 0.8920 | 0.8916 | 0.8696 |
+| KNN | 0.9166 | 0.9812 | 0.9174 | 0.9166 | 0.9168 | 0.8992 |
+| Naive Bayes | 0.8979 | 0.9902 | 0.9007 | 0.8979 | 0.8981 | 0.8773 |
+| Support Vector Machine | **0.9221** | **0.9937** | **0.9224** | **0.9221** | **0.9222** | **0.9059** |
 
-The application loads saved model pipelines and does not retrain
-them on the uploaded test data.
+### 7. Observations
 
-Live application:
-REPLACE_WITH_YOUR_STREAMLIT_APP_URL
+**1. Logistic Regression**
 
-## 7. Project Files
+Logistic Regression achieved an accuracy of 92.07% and an AUC of 0.9934. It demonstrated strong and balanced classification performance across the evaluation metrics. Its results were very close to those of SVM.
 
-- app.py: Streamlit application
-- requirements.txt: Python dependencies
-- README.md: Project documentation
-- test_data.csv: Labeled held-out test data
-- model/: Saved pipelines for the five classifiers
-- metadata.json: Feature names, target name, classes, and model files
+**2. Decision Tree**
+
+Decision Tree achieved an accuracy of 89.20%. It recorded the lowest performance among the five models across the reported evaluation metrics. This suggests that its classification performance was comparatively weaker on this dataset.
+
+**3. K-Nearest Neighbors (KNN)**
+
+KNN achieved an accuracy of 91.66% and an AUC of 0.9812. It showed good classification performance and produced results close to Logistic Regression and SVM.
+
+**4. Gaussian Naive Bayes**
+
+Naive Bayes achieved an accuracy of 89.79% and an AUC of 0.9902. Although its AUC was high, its accuracy and other classification metrics were lower than those of Logistic Regression, KNN, and SVM.
+
+**5. Support Vector Machine (SVM)**
+
+SVM achieved the highest accuracy of 92.21%, AUC of 0.9937, precision of 92.24%, recall of 92.21%, F1 score of 92.22%, and MCC of 0.9059. It delivered the best overall performance among all five models.
+
+### 8. Overall Conclusion
+
+Based on the experimental results, **Support Vector Machine (SVM) is the best-performing model** for the Dry Bean classification task.
+
+It achieved the highest values across all six evaluation metrics, indicating strong classification performance and a good balance between precision and recall.
+
+Logistic Regression was a close second, while KNN also demonstrated competitive performance. Decision Tree recorded the lowest overall results among the evaluated models.
+
+Therefore, SVM is selected as the overall winner of this comparative analysis.
+
+### 9. Streamlit Application
+
+A Streamlit web application was developed to make the trained classification models accessible through an interactive interface.
+
+The application provides the following functionalities:
+
+- Upload a test dataset in CSV format.
+- Select one of the five trained classification models.
+- Evaluate the selected model on the uploaded test data.
+- View performance metrics.
+- View the confusion matrix and classification report.
+
+The application loads the previously saved models and evaluates the uploaded test data without retraining them.
+
+**Live Application:**  
+https://ml-assignment-2-wmc9g2x5ahvkmuvtxr5wpc.streamlit.app/
+
+### 10. Technologies Used
+
+- Python
+- NumPy
+- Pandas
+- Scikit-learn
+- Matplotlib
+- Seaborn
+- Joblib
+- Streamlit
+- Google Colab
+- BITS Virtual Lab
+- GitHub
+
+### 11. Repository
+
+The complete project source code, saved models, preprocessing artifacts, test data, and supporting files are maintained in the GitHub repository.
+
+**GitHub Repository:**  
+https://github.com/shukla-ghosh/ml-assignment-2
